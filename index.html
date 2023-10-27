@@ -4,11 +4,26 @@
 <head>
   <title>basislager.fun</title>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="3; URL=https://www.basislager.space/" />
+  <link href="assets/favicon.png" rel="icon" type="image/x-icon">
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet">
 </head>
 
 <body>
-  <p>This page has been moved permanently.</p>
+  <div class="container">
+    <div class="text-center mt-5">
+      <h4>Aus basislager.fun wird basislager.space</h4>
+      <p>Gleich geht es weiter</p>
+    </div>
+    <div class="text-center"><img class="rounded img-fluid" src="assets/rocket.gif"></div>
+  </div>
 </body>
+
+<script>
+  setTimeout(function () {
+    var target = window.location.hash.slice(1);
+    window.location.href = "https://www.basislager.space" + target;
+  }, 5000);
+</script>
 
 </html>
