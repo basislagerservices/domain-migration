@@ -2,6 +2,10 @@
 
 A page like this is required to get a SSL certificate for the old domain, which is used to redirect to the new domain.
 
-## Namecheap Setup
+## Namecheap setup
 
 ![Advanced DNS Configuration](docs/namecheap_dns.png)
+
+## Github setup
+
+![Github Pages Configuratoin](docs/github_pages.png)
