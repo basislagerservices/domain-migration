@@ -10,16 +10,80 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="heart-field" id="heart-field"></div>
+  <div class="container position-relative" style="z-index: 2;">
     <div class="text-center mt-5">
       <h4>Aus basislager.space wird basislager.love</h4>
       <p>Gleich geht es weiter</p>
     </div>
-    <div class="text-center"><img class="rounded img-fluid" src="assets/rocket.gif"></div>
   </div>
 </body>
 
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .heart-field {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .heart {
+    position: absolute;
+    animation: pop 3s ease-in-out infinite;
+  }
+
+  @keyframes pop {
+    0% {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
+    }
+    20% {
+      transform: translate(calc(var(--dx) * 0.33), calc(var(--dy) * 0.33)) scale(1);
+      opacity: 1;
+    }
+    80% {
+      transform: translate(calc(var(--dx) * 0.66), calc(var(--dy) * 0.66)) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--dx), var(--dy)) scale(0);
+      opacity: 0;
+    }
+  }
+</style>
+
 <script>
+  var field = document.getElementById("heart-field");
+  var emojis = ["❤️", "💖", "💗", "💕", "💘", "💝"];
+
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  for (var i = 0; i < 60; i++) {
+    var heart = document.createElement("span");
+    heart.className = "heart";
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    var size = rand(2, 6);
+    heart.style.fontSize = size + "rem";
+    heart.style.left = rand(0, 100) + "%";
+    heart.style.top = rand(0, 100) + "%";
+    heart.style.setProperty("--dx", rand(-20, 20) + "vw");
+    heart.style.setProperty("--dy", rand(-20, 20) + "vh");
+    heart.style.animationDuration = rand(2, 5) + "s";
+    heart.style.animationDelay = rand(0, 5) + "s";
+
+    field.appendChild(heart);
+  }
+
   setTimeout(function () {
     var target = window.location.hash.slice(1);
     window.location.href = "https://www.basislager.love" + target;
